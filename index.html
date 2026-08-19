@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFZAL STORE | Secure Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background: linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.95)),
+    url("https://wallpapercave.com/wp/wp10371063.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* --- HYPER HEADER ANIMATIONS --- */
+header {
+    text-align: center;
+    padding: 25px 20px;
+    background: linear-gradient(90deg, #ff003c, #000, #ff003c);
+    background-size: 300% 300%;
+    animation: fireGradient 4s ease infinite;
+    box-shadow: 0 0 35px #ff003c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-bottom: 3px solid #ff003c;
+}
+
+@keyframes fireGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.logo-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #ff003c;
+    box-shadow: 0 0 25px #ff003c, 0 0 10px #ffd000;
+    object-fit: cover;
+    margin-bottom: 12px;
+    animation: hyperPulse 1.8s infinite alternate;
+}
+
+@keyframes hyperPulse {
+    0% { transform: scale(1) rotate(0deg); box-shadow: 0 0 15px #ff003c; }
+    100% { transform: scale(1.1) rotate(3deg); box-shadow: 0 0 35px #ff003c, 0 0 20px #ffd000; }
+}
+
+header h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c, 0 0 30px #ffd000;
+    animation: glitchText 2.5s infinite;
+}
+
+@keyframes glitchText {
+    0%, 100% { transform: skew(0deg); }
+    92% { transform: skew(0deg); }
+    94% { transform: skew(-8deg); text-shadow: -3px 0 #00d9ff, 3px 0 #ff003c; }
+    96% { transform: skew(8deg); text-shadow: 3px 0 #00d9ff, -3px 0 #ff003c; }
+    98% { transform: skew(0deg); }
+}
+
+/* --- SEARCH BAR ANIMATIONS --- */
+.search-container {
+    text-align: center;
+    margin: 25px 10px;
+}
+
+.search-container input {
+    padding: 14px 22px;
+    width: 90%;
+    max-width: 480px;
+    background: #000;
+    color: #fff;
+    border: 2px solid #ff003c;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search-container input:focus {
+    box-shadow: 0 0 30px #ff003c, 0 0 15px #00d9ff;
+    border-color: #00d9ff;
+    transform: scale(1.05);
+}
+
+/* --- CARDS GRID & GAMING HOVER --- */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+    padding: 15px;
+}
+
+.card {
+    width: 330px;
+    background: rgba(12, 12, 12, 0.95);
+    border: 2px solid #ff003c;
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: cardEntrance 0.6s ease forwards;
+    backdrop-filter: blur(8px);
+}
+
+@keyframes cardEntrance {
+    from { opacity: 0; transform: translateY(40px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.03);
+    border-color: #ffd000;
+    box-shadow: 0 0 35px rgba(255, 0, 60, 0.9), 0 0 20px rgba(255, 208, 0, 0.7);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.card-title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid #ffd000;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 208, 0, 0.6);
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-avatar {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffd000;
+    text-shadow: 0 0 8px rgba(255, 208, 0, 0.6);
+}
+
+.login-type-badge {
+    padding: 4px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.bg-google { background: #ea4335; color: white; }
+.bg-facebook { background: #1877f2; color: white; }
+
+.field-group {
+    margin-bottom: 8px;
+    background: #111;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #222;
+    transition: border-color 0.3s;
+}
+
+.card:hover .field-group {
+    border-color: #333;
+}
+
+.field-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-label {
+    font-size: 11px;
+    color: #aaa;
+    display: block;
+}
+
+.field-value {
+    font-size: 14px;
+    word-break: break-all;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.backup-codes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-top: 5px;
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.backup-codes-grid::-webkit-scrollbar {
+    width: 4px;
+}
+.backup-codes-grid::-webkit-scrollbar-thumb {
+    background: #ff003c;
+    border-radius: 4px;
+}
+
+.backup-code-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    padding: 5px 8px;
+    border: 1px solid #222;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.backup-code-row:hover {
+    border-color: #00d9ff;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+    transform: translateX(2px);
+}
+
+.backup-code-item {
+    font-size: 13px;
+    font-family: monospace;
+    color: #00d9ff;
+    letter-spacing: 1px;
+}
+
+/* --- FIRE & COOL ANIMATION BUTTONS --- */
+.copy-btn {
+    background: linear-gradient(45deg, #ff003c, #ff3355);
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    font-size: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 6px #ff003c;
+}
+
+.copy-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 12px #ff003c;
+}
+
+.copy-btn.copied {
+    background: linear-gradient(45deg, #00c853, #00ff66) !important;
+    color: #000 !important;
+    box-shadow: 0 0 18px #00ff66 !important;
+    animation: copySuccess 0.4s ease-in-out;
+}
+
+@keyframes copySuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+.unique-code-box {
+    background: #002b36;
+    border: 1px dashed #00d9ff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 217, 255, 0.3);
+}
+
+.unique-code-title {
+    font-size: 11px;
+    color: #00d9ff;
+    display: block;
+}
+
+.unique-code-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.locked-blur {
+    filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+}
+
+.unlock-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff003c, #ff5252);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 0 15px #ff003c;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.unlock-btn:hover {
+    background: linear-gradient(45deg, #ff5252, #ff003c);
+    box-shadow: 0 0 30px #ff003c, 0 0 12px #fff;
+    transform: translateY(-2deg);
+}
+
+.unlock-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- CYBER MODAL ANIMATION --- */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: #0d0d0d;
+    border: 2px solid #ff003c;
+    border-radius: 15px;
+    padding: 22px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 35px #ff003c;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal h2 {
+    color: #ff003c;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 0 0 10px #ff003c;
+}
+
+.option-section {
+    border: 1px solid #333;
+    background: #050505;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.option-title {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.form-control {
+    margin-bottom: 12px;
+}
+
+.form-control label {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.form-control input {
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #ff003c;
+    color: #fff;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-control input:focus {
+    border-color: #00d9ff;
+    box-shadow: 0 0 12px #00d9ff;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: #00c853;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+    box-shadow: 0 0 10px #00c853;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    box-shadow: 0 0 20px #00c853;
+    transform: scale(1.02);
+}
+
+.btn-uniq {
+    background: #00bcd4;
+    box-shadow: 0 0 10px #00bcd4;
+}
+
+.btn-uniq:hover {
+    box-shadow: 0 0 20px #00bcd4;
+}
+
+.btn-close {
+    width: 100%;
+    padding: 10px;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background 0.3s;
+}
+
+.btn-close:hover {
+    background: #ff003c;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="https://i.postimg.cc/5t92KkkT/file-00000000f65882089b666649a8affed0.png" alt="Logo" class="logo-circle">
+    <h1>☠AFZAL ⚔️ STORE</h1>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="🔍 Search Card No (1-50), Email, Google/Facebook..." oninput="filterCards()" autocomplete="off">
+</div>
+
+<div class="cards-grid" id="cardsGrid"></div>
+
+<!-- UNLOCK OPTIONS MODAL -->
+<div class="modal" id="lockerModal">
+    <div class="modal-content">
+        <h2 id="modalTitle">🔒 Unlock Card Details</h2>
+
+        <div class="option-section">
+            <div class="option-title" style="color: #00d9ff;">Authentication</div>
+            
+            <div class="form-control">
+                <label>User Name</label>
+                <input type="text" id="stepUsername" placeholder="Enter User Name" autocomplete="off">
+            </div>
+
+            <div class="form-control">
+                <label>Card 6-Digit Uniq Code</label>
+                <input type="text" id="stepUniqCode" maxlength="6" placeholder="Enter 6-Digit Uniq Code" autocomplete="off">
+            </div>
+
+            <button class="btn-submit btn-uniq" onclick="validateUnlock()">Unlock Card</button>
+        </div>
+
+        <button class="btn-close" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+// --- WEB AUDIO API (CYBER SOUND SYSTEM) ---
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playSound(type) {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'click') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.exponentialRampToValueAtTime(100, now + 0.08);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+        osc.start(now);
+        osc.stop(now + 0.08);
+    } else if (type === 'hover') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(400, now);
+        gain.gain.setValueAtTime(0.05, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+    } else if (type === 'unlock') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.exponentialRampToValueAtTime(900, now + 0.25);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+    }
+}
+
+document.addEventListener('click', (e) => {
+    playSound('click');
+});
+
+const REQUIRED_USERNAME = "AFZALX0.1X";
+
+/* ====================================================================
+   👇👇 1 SE LEKAR 50 TAK ALL CARDS KI INFORMATION YAHAN EDIT KAREIN 👇👇
+   ==================================================================== */
+const CONFIG_CARDS = [
+    {
+        id: 1,
+        uniqCode: "583214",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "afzal__gamer_0.1x@gmail.com",
+        username: "afzal_user_1",
+        password: "Pass@1PasswordChangeHere",
+        backupCodes: ["0216 3958", "5982 0613", "2590 1386", "2094 7351", "0183 5426", "67890121", "78901231", "89012341", "90123451", "01234561"]
+    },
+    {
+        id: 2,
+        uniqCode: "761905",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user2@gmail.com",
+        username: "afzal_user_2",
+        password: "Pass@2Password",
+        backupCodes: ["12345672", "23456782", "34567892", "45678902", "56789012", "67890122", "78901232", "89012342", "90123452", "01234562"]
+    },
+    {
+        id: 3,
+        uniqCode: "429638",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user3@gmail.com",
+        username: "afzal_user_3",
+        password: "Pass@38910",
+        backupCodes: ["12345673", "23456783", "34567893", "45678903", "56789013", "67890123", "78901233", "89012343", "90123453", "01234563"]
+    },
+    {
+        id: 4,
+        uniqCode: "915472",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user4@gmail.com",
+        username: "afzal_user_4",
+        password: "Pass@48910",
+        backupCodes: ["12345674", "23456784", "34567894", "45678904", "56789014", "67890124", "78901234", "89012344", "90123454", "01234564"]
+    },
+    {
+        id: 5,
+        uniqCode: "306851",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user5@gmail.com",
+        username: "afzal_user_5",
+        password: "Pass@58910",
+        backupCodes: ["12345675", "23456785", "34567895", "45678905", "56789015", "67890125", "78901235", "89012345", "90123455", "01234565"]
+    },
+    {
+        id: 6,
+        uniqCode: "847293",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user6@gmail.com",
+        username: "afzal_user_6",
+        password: "Pass@68910",
+        backupCodes: ["12345676", "23456786", "34567896", "45678906", "56789016", "67890126", "78901236", "89012346", "90123456", "01234566"]
+    },
+    {
+        id: 7,
+        uniqCode: "152769",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user7@gmail.com",
+        username: "afzal_user_7",
+        password: "Pass@78910",
+        backupCodes: ["12345677", "23456787", "34567897", "45678907", "56789017", "67890127", "78901237", "89012347", "90123457", "01234567"]
+    },
+    {
+        id: 8,
+        uniqCode: "694318",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user8@gmail.com",
+        username: "afzal_user_8",
+        password: "Pass@88910",
+        backupCodes: ["12345678", "23456788", "34567898", "45678908", "56789018", "67890128", "78901238", "89012348", "90123458", "01234568"]
+    },
+    {
+        id: 9,
+        uniqCode: "273540",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user9@gmail.com",
+        username: "afzal_user_9",
+        password: "Pass@98910",
+        backupCodes: ["12345679", "23456789", "34567899", "45678909", "56789019", "67890129", "78901239", "89012349", "90123459", "01234569"]
+    },
+    {
+        id: 10,
+        uniqCode: "831627",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user10@gmail.com",
+        username: "afzal_user_10",
+        password: "Pass@108910",
+        backupCodes: ["12345670", "23456780", "34567890", "45678900", "56789010", "67890120", "78901230", "89012340", "90123450", "01234560"]
+    },
+    {
+        id: 11,
+        uniqCode: "405916",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user11@gmail.com",
+        username: "afzal_user_11",
+        password: "Pass@118910",
+        backupCodes: ["12345671", "23456781", "34567891", "45678901", "56789011", "67890121", "78901231", "89012341", "90123451", "01234561"]
+    },
+    {
+        id: 12,
+        uniqCode: "728354",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user12@gmail.com",
+        username: "afzal_user_12",
+        password: "Pass@128910",
+        backupCodes: ["12345672", "23456782", "34567892", "45678902", "56789012", "67890122", "78901232", "89012342", "90123452", "01234562"]
+    },
+    {
+        id: 13,
+        uniqCode: "169482",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user13@gmail.com",
+        username: "afzal_user_13",
+        password: "Pass@138910",
+        backupCodes: ["12345673", "23456783", "34567893", "45678903", "56789013", "67890123", "78901233", "89012343", "90123453", "01234563"]
+    },
+    {
+        id: 14,
+        uniqCode: "953706",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user14@gmail.com",
+        username: "afzal_user_14",
+        password: "Pass@148910",
+        backupCodes: ["12345674", "23456784", "34567894", "45678904", "56789014", "67890124", "78901234", "89012344", "90123454", "01234564"]
+    },
+    {
+        id: 15,
+        uniqCode: "514829",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user15@gmail.com",
+        username: "afzal_user_15",
+        password: "Pass@158910",
+        backupCodes: ["12345675", "23456785", "34567895", "45678905", "56789015", "67890125", "78901235", "89012345", "90123455", "01234565"]
+    },
+    {
+        id: 16,
+        uniqCode: "682175",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user16@gmail.com",
+        username: "afzal_user_16",
+        password: "Pass@168910",
+        backupCodes: ["12345676", "23456786", "34567896", "45678906", "56789016", "67890126", "78901236", "89012346", "90123456", "01234566"]
+    },
+    {
+        id: 17,
+        uniqCode: "347961",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user17@gmail.com",
+        username: "afzal_user_17",
+        password: "Pass@178910",
+        backupCodes: ["12345677", "23456787", "34567897", "45678907", "56789017", "67890127", "78901237", "89012347", "90123457", "01234567"]
+    },
+    {
+        id: 18,
+        uniqCode: "809243",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user18@gmail.com",
+        username: "afzal_user_18",
+        password: "Pass@188910",
+        backupCodes: ["12345678", "23456788", "34567898", "45678908", "56789018", "67890128", "78901238", "89012348", "90123458", "01234568"]
+    },
+    {
+        id: 19,
+        uniqCode: "236714",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user19@gmail.com",
+        username: "afzal_user_19",
+        password: "Pass@198910",
+        backupCodes: ["12345679", "23456789", "34567899", "45678909", "56789019", "67890129", "78901239", "89012349", "90123459", "01234569"]
+    },
+    {
+        id: 20,
+        uniqCode: "571638",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user20@gmail.com",
+        username: "afzal_user_20",
+        password: "Pass@208910",
+        backupCodes: ["12345670", "23456780", "34567890", "45678900", "56789010", "67890120", "78901230", "89012340", "90123450", "01234560"]
+    },
+    {
+        id: 21,
+        uniqCode: "924150",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user21@gmail.com",
+        username: "afzal_user_21",
+        password: "Pass@218910",
+        backupCodes: ["12345671", "23456781", "34567891", "45678901", "56789011", "67890121", "78901231", "89012341", "90123451", "01234561"]
+    },
+    {
+        id: 22,
+        uniqCode: "418573",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user22@gmail.com",
+        username: "afzal_user_22",
+        password: "Pass@228910",
+        backupCodes: ["12345672", "23456782", "34567892", "45678902", "56789012", "67890122", "78901232", "89012342", "90123452", "01234562"]
+    },
+    {
+        id: 23,
+        uniqCode: "765291",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user23@gmail.com",
+        username: "afzal_user_23",
+        password: "Pass@238910",
+        backupCodes: ["12345673", "23456783", "34567893", "45678903", "56789013", "67890123", "78901233", "89012343", "90123453", "01234563"]
+    },
+    {
+        id: 24,
+        uniqCode: "350824",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user24@gmail.com",
+        username: "afzal_user_24",
+        password: "Pass@248910",
+        backupCodes: ["12345674", "23456784", "34567894", "45678904", "56789014", "67890124", "78901234", "89012344", "90123454", "01234564"]
+    },
+    {
+        id: 25,
+        uniqCode: "896417",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user25@gmail.com",
+        username: "afzal_user_25",
+        password: "Pass@258910",
+        backupCodes: ["12345675", "23456785", "34567895", "45678905", "56789015", "67890125", "78901235", "89012345", "90123455", "01234565"]
+    },
+    {
+        id: 26,
+        uniqCode: "127583",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user26@gmail.com",
+        username: "afzal_user_26",
+        password: "Pass@268910",
+        backupCodes: ["12345676", "23456786", "34567896", "45678906", "56789016", "67890126", "78901236", "89012346", "90123456", "01234566"]
+    },
+    {
+        id: 27,
+        uniqCode: "643905",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user27@gmail.com",
+        username: "afzal_user_27",
+        password: "Pass@278910",
+        backupCodes: ["12345677", "23456787", "34567897", "45678907", "56789017", "67890127", "78901237", "89012347", "90123457", "01234567"]
+    },
+    {
+        id: 28,
+        uniqCode: "643905",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user28@gmail.com",
+        username: "afzal_user_28",
+        password: "Pass@288910",
+        backupCodes: ["12345678", "23456788", "34567898", "45678908", "56789018", "67890128", "78901238", "89012348", "90123458", "01234568"]
+    },
+    {
+        id: 29,
+        uniqCode: "734520",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user29@gmail.com",
+        username: "afzal_user_29",
+        password: "Pass@298910",
+        backupCodes: ["12345679", "23456789", "34567899", "45678909", "56789019", "67890129", "78901239", "89012349", "90123459", "01234569"]
+    },
+    {
+        id: 30,
+        uniqCode: "951368",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user30@gmail.com",
+        username: "afzal_user_30",
+        password: "Pass@308910",
+        backupCodes: ["12345670", "23456780", "34567890", "45678900", "56789010", "67890120", "78901230", "89012340", "90123450", "01234560"]
+    },
+    {
+        id: 31,
+        uniqCode: "506214",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user31@gmail.com",
+        username: "afzal_user_31",
+        password: "Pass@318910",
+        backupCodes: ["12345671", "23456781", "34567891", "45678901", "56789011", "67890121", "78901231", "89012341", "90123451", "01234561"]
+    },
+    {
+        id: 32,
+        uniqCode: "817459",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user32@gmail.com",
+        username: "afzal_user_32",
+        password: "Pass@328910",
+        backupCodes: ["12345672", "23456782", "34567892", "45678902", "56789012", "67890122", "78901232", "89012342", "90123452", "01234562"]
+    },
+    {
+        id: 33,
+        uniqCode: "364782",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user33@gmail.com",
+        username: "afzal_user_33",
+        password: "Pass@338910",
+        backupCodes: ["12345673", "23456783", "34567893", "45678903", "56789013", "67890123", "78901233", "89012343", "90123453", "01234563"]
+    },
+    {
+        id: 34,
+        uniqCode: "692530",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user34@gmail.com",
+        username: "afzal_user_34",
+        password: "Pass@348910",
+        backupCodes: ["12345674", "23456784", "34567894", "45678904", "56789014", "67890124", "78901234", "89012344", "90123454", "01234564"]
+    },
+    {
+        id: 35,
+        uniqCode: "145927",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user35@gmail.com",
+        username: "afzal_user_35",
+        password: "Pass@358910",
+        backupCodes: ["12345675", "23456785", "34567895", "45678905", "56789015", "67890125", "78901235", "89012345", "90123455", "01234565"]
+    },
+    {
+        id: 36,
+        uniqCode: "873641",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user36@gmail.com",
+        username: "afzal_user_36",
+        password: "Pass@368910",
+        backupCodes: ["12345676", "23456786", "34567896", "45678906", "56789016", "67890126", "78901236", "89012346", "90123456", "01234566"]
+    },
+    {
+        id: 37,
+        uniqCode: "258309",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user37@gmail.com",
+        username: "afzal_user_37",
+        password: "Pass@378910",
+        backupCodes: ["12345677", "23456787", "34567897", "45678907", "56789017", "67890127", "78901237", "89012347", "90123457", "01234567"]
+    },
+    {
+        id: 38,
+        uniqCode: "719684",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user38@gmail.com",
+        username: "afzal_user_38",
+        password: "Pass@388910",
+        backupCodes: ["12345678", "23456788", "34567898", "45678908", "56789018", "67890128", "78901238", "89012348", "90123458", "01234568"]
+    },
+    {
+        id: 39,
+        uniqCode: "430571",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user39@gmail.com",
+        username: "afzal_user_39",
+        password: "Pass@398910",
+        backupCodes: ["12345679", "23456789", "34567899", "45678909", "56789019", "67890129", "78901239", "89012349", "90123459", "01234569"]
+    },
+    {
+        id: 40,
+        uniqCode: "986235",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user40@gmail.com",
+        username: "afzal_user_40",
+        password: "Pass@408910",
+        backupCodes: ["12345670", "23456780", "34567890", "45678900", "56789010", "67890120", "78901230", "89012340", "90123450", "01234560"]
+    },
+    {
+        id: 41,
+        uniqCode: "321847",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user41@gmail.com",
+        username: "afzal_user_41",
+        password: "Pass@418910",
+        backupCodes: ["12345671", "23456781", "34567891", "45678901", "56789011", "67890121", "78901231", "89012341", "90123451", "01234561"]
+    },
+    {
+        id: 42,
+        uniqCode: "654192",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user42@gmail.com",
+        username: "afzal_user_42",
+        password: "Pass@428910",
+        backupCodes: ["12345672", "23456782", "34567892", "45678902", "56789012", "67890122", "78901232", "89012342", "90123452", "01234562"]
+    },
+    {
+        id: 43,
+        uniqCode: "207536",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user43@gmail.com",
+        username: "afzal_user_43",
+        password: "Pass@438910",
+        backupCodes: ["12345673", "23456783", "34567893", "45678903", "56789013", "67890123", "78901233", "89012343", "90123453", "01234563"]
+    },
+    {
+        id: 44,
+        uniqCode: "845719",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user44@gmail.com",
+        username: "afzal_user_44",
+        password: "Pass@448910",
+        backupCodes: ["12345674", "23456784", "34567894", "45678904", "56789014", "67890124", "78901234", "89012344", "90123454", "01234564"]
+    },
+    {
+        id: 45,
+        uniqCode: "573260",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user45@gmail.com",
+        username: "afzal_user_45",
+        password: "Pass@458910",
+        backupCodes: ["12345675", "23456785", "34567895", "45678905", "56789015", "67890125", "78901235", "89012345", "90123455", "01234565"]
+    },
+    {
+        id: 46,
+        uniqCode: "918354",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user46@gmail.com",
+        username: "afzal_user_46",
+        password: "Pass@468910",
+        backupCodes: ["12345676", "23456786", "34567896", "45678906", "56789016", "67890126", "78901236", "89012346", "90123456", "01234566"]
+    },
+    {
+        id: 47,
+        uniqCode: "462781",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user47@gmail.com",
+        username: "afzal_user_47",
+        password: "Pass@478910",
+        backupCodes: ["12345677", "23456787", "34567897", "45678907", "56789017", "67890127", "78901237", "89012347", "90123457", "01234567"]
+    },
+    {
+        id: 48,
+        uniqCode: "739105",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user48@gmail.com",
+        username: "afzal_user_48",
+        password: "Pass@488910",
+        backupCodes: ["12345678", "23456788", "34567898", "45678908", "56789018", "67890128", "78901238", "89012348", "90123458", "01234568"]
+    },
+    {
+        id: 49,
+        uniqCode: "185643",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Google",
+        email: "user49@gmail.com",
+        username: "afzal_user_49",
+        password: "Pass@498910",
+        backupCodes: ["12345679", "23456789", "34567899", "45678909", "56789019", "67890129", "78901239", "89012349", "90123459", "01234569"]
+    },
+    {
+        id: 50,
+        uniqCode: "527916",
+        avatarUrl: "https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png",
+        platform: "Facebook",
+        email: "user50@gmail.com",
+        username: "afzal_user_50",
+        password: "Pass@508910",
+        backupCodes: ["12345670", "23456780", "34567890", "45678900", "56789010", "67890120", "78901230", "89012340", "90123450", "01234560"]
+    }
+];
+
+let cardsData = [];
+let activeCardId = null;
+
+function initData() {
+    try {
+        let saved = localStorage.getItem("store_cards_strict_v11");
+
+        if (saved) {
+            cardsData = JSON.parse(saved);
+            cardsData.forEach(card => {
+                let conf = CONFIG_CARDS.find(c => c.id === card.id);
+                if (conf) {
+                    card.uniqCode = conf.uniqCode;
+                    card.avatarUrl = conf.avatarUrl;
+                    card.platform = conf.platform;
+                    card.email = conf.email;
+                    card.username = conf.username;
+                    card.password = conf.password;
+                    card.backupCodes = conf.backupCodes;
+                }
+            });
+        } else {
+            cardsData = JSON.parse(JSON.stringify(CONFIG_CARDS));
+        }
+    } catch(e) {
+        cardsData = JSON.parse(JSON.stringify(CONFIG_CARDS));
+    }
+    
+    localStorage.setItem("store_cards_strict_v11", JSON.stringify(cardsData));
+    renderCards();
+}
+
+function renderCards() {
+    const grid = document.getElementById("cardsGrid");
+    grid.innerHTML = "";
+
+    cardsData.forEach((item, index) => {
+        let isGoogle = item.platform === "Google";
+        let isUnlocked = item.isUnlocked;
+
+        let cardHtml = `
+            <div class="card" data-card-number="${item.id}" id="card-node-${item.id}" style="animation-delay: ${index * 0.02}s;">
+                <div class="card-header">
+                    <div class="card-title-container">
+                        <img src="${item.avatarUrl || 'https://i.postimg.cc/HkHGx81n/file-00000000724882118f328bab45762c39.png'}" alt="Avatar" class="card-avatar">
+                        <span class="card-title">CARD #${item.id}</span>
+                    </div>
+                    <span class="login-type-badge ${isGoogle ? 'bg-google' : 'bg-facebook'}">${item.platform}</span>
+                </div>
+
+                <div class="${isUnlocked ? '' : 'locked-blur'}">
+        `;
+
+        if(isGoogle) {
+            cardHtml += `
+                <div class="field-group">
+                    <div class="field-header">
+                        <span class="field-label">PRIMARY GOOGLE EMAIL</span>
+                        ${isUnlocked ? `<button class="copy-btn" onmouseenter="playSound('hover')" onclick="copyText('${item.email}', this)">Copy</button>` : ''}
+                    </div>
+                    <span class="field-value">${isUnlocked ? item.email : '••••••••••••@gmail.com'}</span>
+                </div>
+            `;
+        } else {
+            cardHtml += `
+                <div class="field-group">
+                    <div class="field-header">
+                        <span class="field-label">FACEBOOK USERNAME/EMAIL</span>
+                        ${isUnlocked ? `<button class="copy-btn" onmouseenter="playSound('hover')" onclick="copyText('${item.username}', this)">Copy</button>` : ''}
+                    </div>
+                    <span class="field-value">${isUnlocked ? item.username : '••••••••••••'}</span>
+                </div>
+            `;
+        }
+
+        cardHtml += `
+            <div class="field-group">
+                <div class="field-header">
+                    <span class="field-label">PASSWORD</span>
+                    ${isUnlocked ? `<button class="copy-btn" onmouseenter="playSound('hover')" onclick="copyText('${item.password}', this)">Copy</button>` : ''}
+                </div>
+                <span class="field-value">${isUnlocked ? item.password : '••••••••••••'}</span>
+            </div>
+        `;
+
+        cardHtml += `
+            <div class="field-group">
+                <span class="field-label">10 BACKUP CODES</span>
+                <div class="backup-codes-grid">
+        `;
+
+        let codes = item.backupCodes || ["88888888", "88888888", "88888888", "88888888", "88888888", "88888888", "88888888", "88888888", "88888888", "88888888"];
+        codes.forEach(code => {
+            cardHtml += `
+                <div class="backup-code-row">
+                    <span class="backup-code-item">${isUnlocked ? code : '••••••••'}</span>
+                    ${isUnlocked ? `<button class="copy-btn" onmouseenter="playSound('hover')" onclick="copyText('${code}', this)">Copy</button>` : ''}
+                </div>
+            `;
+        });
+
+        cardHtml += `
+                </div>
+            </div>
+            <div class="unique-code-box">
+                <span class="unique-code-title">LAST UNIQ CODE</span>
+                <span class="unique-code-value">${isUnlocked ? item.uniqCode : '🔒 UNIQ-XXXXXX'}</span>
+            </div>
+        </div>`;
+
+        if(!isUnlocked) {
+            cardHtml += `<button class="unlock-btn" onmouseenter="playSound('hover')" onclick="openModal(${item.id})">🔓 Unlock Card Details</button>`;
+        } else {
+            cardHtml += `<div style="text-align:center; color:#00c853; font-weight:bold; margin-top:10px; text-shadow:0 0 8px #00c853;">✅ UNLOCKED & READY</div>`;
+        }
+
+        cardHtml += `</div>`;
+        grid.innerHTML += cardHtml;
+    });
+}
+
+function copyText(text, btn) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text);
+    } else {
+        let textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            console.error('Fallback Copy Failed:', err);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    let originalText = btn.innerText;
+    btn.innerText = "COPIED ✓";
+    btn.classList.add("copied");
+    
+    setTimeout(() => {
+        btn.innerText = originalText;
+        btn.classList.remove("copied");
+    }, 1200);
+}
+
+function openModal(id) {
+    activeCardId = id;
+    document.getElementById("modalTitle").innerText = `🔒 Unlock Card #${id}`;
+    document.getElementById("stepUsername").value = "";
+    document.getElementById("stepUniqCode").value = "";
+    document.getElementById("lockerModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("lockerModal").style.display = "none";
+    activeCardId = null;
+}
+
+function validateUnlock() {
+    let inputUsername = document.getElementById("stepUsername").value.trim();
+    let pastedCode = document.getElementById("stepUniqCode").value.trim();
+    let cardIndex = cardsData.findIndex(c => c.id === activeCardId);
+
+    if (inputUsername.toUpperCase() !== REQUIRED_USERNAME.toUpperCase()) {
+        alert("Invalid User Name! Access denied.");
+        return;
+    }
+
+    if (!pastedCode || pastedCode.length !== 6) {
+        alert("Please enter a valid 6-Digit Uniq Code!");
+        return;
+    }
+
+    if (cardIndex !== -1 && cardsData[cardIndex].uniqCode === pastedCode) {
+        cardsData[cardIndex].isUnlocked = true;
+
+        let unlockedCard = cardsData.splice(cardIndex, 1)[0];
+        cardsData.unshift(unlockedCard);
+
+        localStorage.setItem("store_cards_strict_v11", JSON.stringify(cardsData));
+        
+        playSound('unlock');
+        renderCards();
+        closeModal();
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        alert("Incorrect Uniq Code for Card #" + activeCardId + "!");
+    }
+}
+
+/* ACCURATE & STRICT SEARCH FILTER */
+function filterCards() {
+    let query = document.getElementById("searchInput").value.trim().toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach((card) => {
+        let cardId = card.getAttribute("data-card-number");
+        let cardItem = cardsData.find(c => c.id.toString() === cardId);
+
+        if(!cardItem) {
+            card.style.display = "none";
+            return;
+        }
+
+        let emailVal = cardItem.email ? cardItem.email.toLowerCase() : "";
+        let usernameVal = cardItem.username ? cardItem.username.toLowerCase() : "";
+        let platformVal = cardItem.platform ? cardItem.platform.toLowerCase() : "";
+
+        if(
+            query === "" || 
+            cardId === query || 
+            emailVal.includes(query) || 
+            usernameVal.includes(query) || 
+            platformVal.includes(query)
+        ) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+window.onload = initData;
+</script>
+
+</body>
+</html>
